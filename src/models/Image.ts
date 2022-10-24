@@ -8,20 +8,20 @@ export class Image {
         this._alt = alt;
     }
 
-    setAlt(alt: string){
+    public setAlt = (alt: string) => {
         this._alt = alt;
     }
 
-    setSrc(src: string){
+    public setSrc = (src: string) =>{
         this._src = src;
-        this.parseType()
+        this.__parseType()
     }
 
-    parseType(){
+    private __parseType = () =>{
         this._type = "image/" + (this._src.split(".").reverse().shift() || "")
     }
 
-    data = () =>{
+    public data = () =>{
         let imagen = {
             src : this._src,
             alt : this._alt,
