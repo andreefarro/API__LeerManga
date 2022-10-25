@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
-    "start": "node ./dist/app.js",
+    "start": "node ./dist",
     "build": "tsc",
-    "dev": "nodemon ./src/app.ts"
+    "dev": "nodemon ./src/index.ts"
   },
   "author": "Arnaldo Andree Farro Cardenas",
   "license": "ISC",
