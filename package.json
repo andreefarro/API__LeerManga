@@ -26,6 +26,7 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
+    "@types/cheerio": "^0.22.31",
     "@vercel/node": "^2.5.26",
     "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.12",
