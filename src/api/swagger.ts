@@ -368,11 +368,11 @@ const options = {
 
 
 export const swaggerDocs = (app: any,port: any) =>{
-    app.use("/", (req: any, res: any) =>{
+    app.get("/", (req: any, res: any) =>{
         let a = ""
-        a += req.headers+"\n"
         a += req.url+"\n"
         a += req.hostname +"\n"
+        a += req.headers.host+"\n"
         a += req.headers.hostname+"\n"
         
         res.send(a)
