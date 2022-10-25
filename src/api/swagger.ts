@@ -1,9 +1,10 @@
 import swaggerJSDoc from "swagger-jsdoc";
 import swagerUi from "swagger-ui-express";
-import os from "os"
+import express,{Express} from 'express';
 
-let PROTOCOL = "http"
-let PATH_URL = "localhost:3000"
+
+let PATH_URL = ""
+let slash = "://"
 
 const options = {
     definition: {
@@ -15,7 +16,7 @@ const options = {
         },
         servers:[
             {
-                url: PROTOCOL+"://"+PATH_URL,
+                url: PATH_URL,
                 description: 'Entorno de producción de apis'
             },
         ],
@@ -365,27 +366,17 @@ const options = {
     ]
 }
 
+//const swaggerSpec = swaggerJSDoc(options)
 
+export const swaggerDocs = (app: Express, port: any) =>{
 
-export const swaggerDocs = (app: any,port: any) =>{
-    app.get("/", (req: any, res: any) =>{
-        let a = ""
-        a += req.url+"\n"
-        a += req.hostname +"\n"
-        a += req.headers.host+"\n"
-        a += req.headers.hostname+"\n"
-        
-        res.send(a)
-        //console.log(req.headers)
-        //PATH_URL = req.hostname || ""
-        
-        //console.log(PATH_URL)
-        //PROTOCOL = req.protocol || ""
-
-        //const swaggerSpec = swaggerJSDoc(options)
-
-        //swagerUi.serve,swagerUi.setup(swaggerSpec)
+    app.get('/',(req, res) =>  {
+        let hostName = req.header("host"); 
+        PATH_URL = req.protocol+slash+hostName
     })
+
+    app.use("/", () =>swagerUi.serve,swagerUi.setup(swaggerJSDoc(options)))
+
     console.log(`version 1 Docs http://localhost:${port}/api/v1/docs`)
 }
 
