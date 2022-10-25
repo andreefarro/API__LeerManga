@@ -1,5 +1,6 @@
 import swaggerJSDoc from "swagger-jsdoc";
 import swagerUi from "swagger-ui-express";
+import os from "os"
 
 let PROTOCOL = "http"
 let PATH_URL = "localhost:3000"
@@ -14,7 +15,7 @@ const options = {
         },
         servers:[
             {
-                url: PROTOCOL+"://"+PATH_URL,
+                url: "https://api-leermanga.vercel.app",
                 description: 'Entorno de producción de apis'
             },
         ],
@@ -367,9 +368,11 @@ const options = {
 
 
 export const swaggerDocs = (app: any,port: any) =>{
-    app.use("/", (req: any, res: any) =>{
-        PATH_URL = req.get('host') || ""
-        PROTOCOL = req.protocol || ""
+    app.use("/", (req: Request, res: Response) =>{
+        //console.log(req.hostname)
+        //PATH_URL = req.hostname || ""
+        //console.log(PATH_URL)
+        //PROTOCOL = req.protocol || ""
 
         const swaggerSpec = swaggerJSDoc(options)
 
