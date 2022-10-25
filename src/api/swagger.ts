@@ -367,12 +367,12 @@ const options = {
 
 
 export const swaggerDocs = (app: any,port: any) =>{
-    app.use("/api/v1/docs/", (req: any, res: any) =>{
+    app.use("/", (req: any, res: any) =>{
         PATH_URL = req.get('host') || ""
         PROTOCOL = req.protocol || ""
 
         const swaggerSpec = swaggerJSDoc(options)
-        
+
         swagerUi.serve,swagerUi.setup(swaggerSpec)
     })
     console.log(`version 1 Docs http://localhost:${port}/api/v1/docs`)
