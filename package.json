@@ -8,10 +8,12 @@
   },
   "scripts": {
     "init": "node ./dist",
-    "build": "tsc",
+    "prebuild": "rimraf dist",
+    "build": "sucrase ./src -d ./dist --transforms typescript,imports",
+    "pre-prod": "rimraf dist && sucrase ./src -d ./dist --transforms typescript,imports",
     "dev": "nodemon ./src/index.ts",
     "start": "vercel dev",
-    "deploy" : "vercel deploy --prod"
+    "deploy": "vercel deploy --prod"
   },
   "author": "Arnaldo Andree Farro Cardenas",
   "license": "ISC",
@@ -27,6 +29,8 @@
     "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.12",
     "express": "^4.18.1",
+    "rimraf": "^3.0.2",
+    "sucrase": "^3.28.0",
     "swagger-jsdoc": "^6.2.5",
     "swagger-ui-express": "^4.5.0",
     "vercel": "^28.4.12"

@@ -1,14 +1,15 @@
 {
     "version": 2,
+    "public": true,
     "builds": [
       {
         "src": "src/index.ts",
         "use": "@vercel/node"
       }
     ],
-    "routes": [    
+    "routes": [
       {
-        "src": "/api/v1/(.*)",
+        "src": "/(.*)",
         "dest": "/src/index.ts"
       }
     ]
