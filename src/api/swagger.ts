@@ -365,19 +365,12 @@ const options = {
     ]
 }
 
+const swaggerSpec = swaggerJSDoc(options)
+
 
 
 export const swaggerDocs = (app: any,port: any) =>{
-    app.use("/", (req: Request, res: Response) =>{
-        //console.log(req.hostname)
-        //PATH_URL = req.hostname || ""
-        //console.log(PATH_URL)
-        //PROTOCOL = req.protocol || ""
-
-        const swaggerSpec = swaggerJSDoc(options)
-
-        swagerUi.serve,swagerUi.setup(swaggerSpec)
-    })
+    app.use("/", swagerUi.serve, swagerUi.setup(swaggerSpec))
     console.log(`version 1 Docs http://localhost:${port}/api/v1/docs`)
 }
 
