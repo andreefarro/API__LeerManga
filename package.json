@@ -2,14 +2,16 @@
   "name": "api__leermanga",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.ts",
   "engines": {
     "node": "16.x"
   },
   "scripts": {
-    "start": "node ./dist",
+    "init": "node ./dist",
     "build": "tsc",
-    "dev": "nodemon ./src/index.ts"
+    "dev": "nodemon ./src/index.ts",
+    "start": "vercel dev",
+    "deploy" : "vercel deploy --prod"
   },
   "author": "Arnaldo Andree Farro Cardenas",
   "license": "ISC",
@@ -26,6 +28,7 @@
     "cheerio": "^1.0.0-rc.12",
     "express": "^4.18.1",
     "swagger-jsdoc": "^6.2.5",
-    "swagger-ui-express": "^4.5.0"
+    "swagger-ui-express": "^4.5.0",
+    "vercel": "^28.4.12"
   }
 }
