@@ -15,7 +15,7 @@ const options = {
         },
         servers:[
             {
-                url: "https://api-leermanga.vercel.app",
+                url: PROTOCOL+"://"+PATH_URL,
                 description: 'Entorno de producción de apis'
             },
         ],
@@ -365,12 +365,27 @@ const options = {
     ]
 }
 
-const swaggerSpec = swaggerJSDoc(options)
-
 
 
 export const swaggerDocs = (app: any,port: any) =>{
-    app.use("/", swagerUi.serve, swagerUi.setup(swaggerSpec))
+    app.use("/", (req: any, res: any) =>{
+        let a = ""
+        a += req.headers+"\n"
+        a += req.url+"\n"
+        a += req.hostname +"\n"
+        a += req.headers.hostname+"\n"
+        
+        res.send(a)
+        //console.log(req.headers)
+        //PATH_URL = req.hostname || ""
+        
+        //console.log(PATH_URL)
+        //PROTOCOL = req.protocol || ""
+
+        //const swaggerSpec = swaggerJSDoc(options)
+
+        //swagerUi.serve,swagerUi.setup(swaggerSpec)
+    })
     console.log(`version 1 Docs http://localhost:${port}/api/v1/docs`)
 }
 
