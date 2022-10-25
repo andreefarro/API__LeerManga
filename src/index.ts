@@ -6,8 +6,15 @@ const app = express();
 const port = 3000;
 
 
+app.get('/',(req, res) =>  {
+
+  let hostName_header = req.header("host"); 
+
+  res.send(hostName_header);
+});
 
 app.use("/api/v1/", rest);
+
 
 
 app.listen(port, function () {
