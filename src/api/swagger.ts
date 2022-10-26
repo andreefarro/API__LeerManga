@@ -1,6 +1,6 @@
 import swaggerJSDoc from "swagger-jsdoc";
-import swagerUi from "swagger-ui-express";
-import express,{Express} from 'express';
+import swaggerUi from "swagger-ui-express";
+import {Express} from 'express';
 
 
 let PATH_URL = ""
@@ -14,12 +14,6 @@ const options = {
             description: "The API was dedicated to obtaining data through Web scraping to the page `LeerManga.net` tracking its library, Mangas, Chapters, latest added manga, recent episodes, filters by genre and pagination.",
             version: "1.0.0"
         },
-        servers:[
-            {
-                url: PATH_URL,
-                description: 'Entorno de producción de apis'
-            },
-        ],
         components:{
             schemas:{ 
                 Card:{
@@ -366,18 +360,21 @@ const options = {
     ]
 }
 
-//const swaggerSpec = swaggerJSDoc(options)
+const swaggerSpec = swaggerJSDoc(options)
+
 
 export const swaggerDocs = (app: Express, port: any) =>{
 
-    app.get('/',(req, res) =>  {
+    /*app.get('/',(req, res) =>  {
         let hostName = req.header("host"); 
         PATH_URL = req.protocol+slash+hostName
-        res.send(PATH_URL)
-    })
+        options.definition.servers[0].url = PATH_URL
+    })*/
 
-    //app.use("/docs", swagerUi.serve, swagerUi.setup(swaggerJSDoc(options)))
+    app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerJSDoc(options)))
 
-    console.log(`version 1 Docs http://localhost:${port}/api/v1/docs`)
+    console.log(`version 1 Docs http://localhost:${port}`)
+
+
 }
 
