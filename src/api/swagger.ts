@@ -371,9 +371,9 @@ export const swaggerDocs = (app: Express, port: any) =>{
         options.definition.servers[0].url = PATH_URL
     })*/
 
-    app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerJSDoc(options)))
+    app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
-    console.log(`version 1 Docs http://localhost:${port}`)
+    console.log(`version 1 Docs http://localhost:${port}/docs`)
 
 
 }
