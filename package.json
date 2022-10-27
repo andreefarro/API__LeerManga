@@ -2,16 +2,16 @@
   "name": "api__leermanga",
   "version": "1.0.0",
   "description": "",
-  "main": "src/index.ts",
+  "main": "index.ts",
   "engines": {
     "node": "16.x"
   },
   "scripts": {
     "init": "node ./dist",
     "prebuild": "rimraf dist",
-    "build": "sucrase ./src -d ./dist --transforms typescript,imports",
-    "pre-prod": "rimraf dist && sucrase ./src -d ./dist --transforms typescript,imports",
-    "dev": "nodemon ./src/index.ts",
+    "build": "sucrase ./ -d ./dist --transforms typescript,imports",
+    "pre-prod": "rimraf dist && sucrase ./ -d ./dist --transforms typescript,imports",
+    "dev": "nodemon ./index.ts",
     "start": "vercel dev",
     "deploy": "vercel deploy --prod"
   },
@@ -20,6 +20,7 @@
   "devDependencies": {
     "@types/express": "^4.17.14",
     "@types/swagger-jsdoc": "^6.0.1",
+    "@types/swagger-ui-dist": "^3.30.1",
     "@types/swagger-ui-express": "^4.1.3",
     "nodemon": "^2.0.20",
     "ts-node-dev": "^2.0.0",

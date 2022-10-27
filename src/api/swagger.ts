@@ -14,6 +14,9 @@ const options = {
             description: "The API was dedicated to obtaining data through Web scraping to the page `LeerManga.net` tracking its library, Mangas, Chapters, latest added manga, recent episodes, filters by genre and pagination.",
             version: "1.0.0"
         },
+        servers:{
+            url: "https://api-leermanga.vercel.app"
+        },
         components:{
             schemas:{ 
                 Card:{
@@ -371,9 +374,14 @@ export const swaggerDocs = (app: Express, port: any) =>{
         options.definition.servers[0].url = PATH_URL
     })*/
 
+    app.get("/docs.json", (req, res) =>  {
+        res.setHeader("Content-Type","application/json");
+        res.send(swaggerSpec)
+    })
+
     app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
-    console.log(`version 1 Docs http://localhost:${port}/docs`)
+    console.log(`version 1 Docs http://localhost:${port}/docs.json`)
 
 
 }
