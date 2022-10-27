@@ -13,8 +13,19 @@ const port = 3000;
  * para cargar los estilos de swagger
  * 
  */
+
+
+/**
+ * para poder usar la aplicacion en local es necesario
+ * eliminar las siguientes dos lineas por lo que los estilos de 
+ * swagger si son traidos de manera local
+ */
+
 app.use(express.static('public'));
 app.use("/swagger-ui.css",express.static(__dirname +'/public/css/swagger-ui.css'));
+app.use("swagger-ui.css",express.static(__dirname +'/public/css/swagger-ui.css'));
+
+
 
 
 app.use("/api/v1/", rest);
