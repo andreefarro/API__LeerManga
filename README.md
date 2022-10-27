@@ -3,7 +3,7 @@ La API se dedicó a la obtención de datos mediante Web scraping a la página Le
 
 Formatos **JSON**.
 
-## Deploy en Vercel
+## Deploy en Vercel y Documentacion
 * [api-leermanga.vercel.app](https://api-leermanga.vercel.app/)
 
 ## Instalación de dependencias y run del proyecto
@@ -43,10 +43,11 @@ npm run dev
 
 ---
 
-Logs
+### Logs
 ```shell
 app listening on port 3000!
 version 1 Docs http://localhost:3000
 ```
-URL: `http://127.0.0.1:3000`
+### URL: 
+- `http://127.0.0.1:3000`
 

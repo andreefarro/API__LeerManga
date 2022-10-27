@@ -8,8 +8,8 @@
   },
   "scripts": {
     "copy-files": "copyfiles -u 1 public/**/* dist/public",
-    "start": "node ./dist",
     "clean": "rimraf dist",
+    "start": "node ./dist",    
     "build": "npm run clean && tsc && npm run copy-files",
     "dev": "nodemon ./index.ts",
     "dev-deploy": "vercel dev",

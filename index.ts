@@ -26,8 +26,9 @@ app.use("/api/v1/", rest);
 
 
 app.listen(port, function () {
-  console.log(`Example app listening on port ${port}!`);
-  //V1SwaggerDocs(app, port)
+  console.log(`app listening on port ${port}!`);
+  console.log(`version 1 Docs http://localhost:${port}`)
+  //V1SwaggerDocs(app, port)  
 });
 
 
